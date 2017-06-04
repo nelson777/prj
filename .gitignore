@@ -1,5 +1,5 @@
 node_modules/*
 src/vendor/*
-www/js/*
+www/*
 package-lock.json
 .sass-cache/

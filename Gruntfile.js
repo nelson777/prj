@@ -4,10 +4,11 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     // Metadata.
-    destRoot: 'www/',
-    nodeGlobal: '/usr/lib/node_modules/',
-    nodeLocal: 'node_modules/',
-    vendor: 'src/vendor/',
+    src: 'src',
+    dest: 'www',
+    nodeGlobal: '/usr/lib/node_modules',
+    nodeLocal: 'node_modules',
+    vendor: '<%= src %>/vendor',
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -16,25 +17,42 @@ module.exports = function(grunt) {
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
     clean: [
-            '<%= vendor %>*',
-            '<%= destRoot %>/js',
-            '<%= destRoot %>/css'
+            '<%= vendor %>/*',
+            '<%= dest %>',
     ],
     copy: {
         main: {
             files: [
-                { src:"<%= nodeLocal %>jquery/dist/jquery.min.js", dest:"<%= vendor %>jquery/jquery.min.js" },
-                { src:"<%= nodeGlobal %>requirejs/require.js", dest:"<%= vendor %>require/require.js" }
+                { src:"<%= nodeLocal %>/jquery/dist/jquery.min.js", dest:"<%= vendor %>/jquery/jquery.min.js" },
+                { src:"<%= nodeGlobal %>/requirejs/require.js", dest:"<%= vendor %>/require/require.js" },
+                { src:"<%= src %>/index.html", dest:"<%= dest %>/index.html" }
             ]
 
+        }
+    },
+    'string-replace': {
+        dist: {
+            files: {
+                '<%= dest %>/index.html': '<%= dest %>/index.html'
+            } ,
+            options: {
+                replacements: [{
+                    pattern: /\.\.\/www\//ig,
+                    replacement: ''
+                },
+                {
+                    pattern: /config\/app|vendor\/require\/require/ig,
+                    replacement: 'js\/prj.min'
+                }]
+            }
         }
     },
     requirejs: {
       compile: {
           options: {
-              baseUrl: 'src/js',
+              baseUrl: '<%= src %>/js',
               name: "../config/app",
-              out: "www/js/prj.min.js",
+              out: "<%= dest %>/js/prj.min.js",
               paths: {
                    jquery: '../vendor/jquery/jquery.min',
                    requireLib: '../vendor/require/require'
@@ -50,7 +68,7 @@ module.exports = function(grunt) {
               style: 'compressed'
           },
           files: {
-              'www/css/base.css': 'src/scss/base.scss'
+              '<%= dest %>/css/base.css': '<%= src %>/scss/base.scss'
           },
 
       }
@@ -60,10 +78,11 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-string-replace');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-sass');
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'copy', 'requirejs', 'sass']);
+  grunt.registerTask('default', ['clean', 'copy', 'string-replace', 'requirejs', 'sass']);
 
 };
