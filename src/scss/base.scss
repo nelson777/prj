@@ -1,5 +1,6 @@
-@import 'cores';
+@import 'color';
 
 div {
-    background-color: $fundo;
+    background-color: $background-color;
+    color: $text-color;
 }
