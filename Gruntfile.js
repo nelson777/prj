@@ -17,7 +17,8 @@ module.exports = function(grunt) {
     // Task configuration.
     clean: [
             '<%= vendor %>*',
-            '<%= destRoot %>/js*'
+            '<%= destRoot %>/js',
+            '<%= destRoot %>/css'
     ],
     copy: {
         main: {
@@ -41,6 +42,18 @@ module.exports = function(grunt) {
               include: 'requireLib'
           }
       }
+  },
+  sass: {
+      dist: {
+          options: {
+              sourcemap: 'none',
+              style: 'compressed'
+          },
+          files: {
+              'www/css/base.css': 'src/scss/base.scss'
+          },
+
+      }
   }
   });
 
@@ -48,8 +61,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'copy', 'requirejs']);
+  grunt.registerTask('default', ['clean', 'copy', 'requirejs', 'sass']);
 
 };

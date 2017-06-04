@@ -1,7 +1,7 @@
 define(function () {
 
     return {
-        name: 'Projecto Base',
+        name: 'Projeto Base',
         version:  '0.0.0a'
     };
 });

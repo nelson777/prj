@@ -2,3 +2,4 @@ node_modules/*
 src/vendor/*
 www/js/*
 package-lock.json
+.sass-cache/
