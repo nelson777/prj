@@ -38,6 +38,10 @@ module.exports = function(grunt) {
                 { src:"<%= nodeLocal %>/requirejs/require.js", dest:"<%= vendor %>/require/require.js" },
                 { src:"semantic/dist/semantic.min.js", dest:"<%= vendor %>/semantic/semantic.min.js" },
                 { src:"semantic/dist/semantic.min.css", dest:"<%= vendor %>/semantic/semantic.min.css" },
+                { src:"<%= nodeLocal %>/moment/min/moment.min.js", dest:"<%= vendor %>/moment/moment.min.js" },
+                { src:"<%= nodeLocal %>/signals/dist/signals.min.js", dest:"<%= vendor %>/signals/signals.min.js" },
+                { src:"<%= nodeLocal %>/crossroads/dist/crossroads.min.js", dest:"<%= vendor %>/crossroads/crossroads.min.js" },
+                { src:"<%= nodeLocal %>/hasher/dist/js/hasher.min.js", dest:"<%= vendor %>/hasher/hasher.min.js" },
                 { src:"<%= src %>/index.html", dest:"<%= dest %>/index.html" }
             ]
 
@@ -68,6 +72,10 @@ module.exports = function(grunt) {
               out: "<%= dest %>/js/prj.min.js",
               paths: {
                    jquery: '../vendor/jquery/jquery.min',
+                   moment: '../vendor/moment/moment.min',
+                   crossroads: '../vendor/crossroads/crossroads.min',
+                   hasher: '../vendor/hasher/hasher.min',
+                   signals: '../vendor/signals/signals.min',
                    requireLib: '../vendor/require/require',
                    semanticLib: '../vendor/semantic/semantic.min'
               },
