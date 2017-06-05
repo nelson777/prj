@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         main: {
             files: [
                 { src:"<%= nodeLocal %>/jquery/dist/jquery.min.js", dest:"<%= vendor %>/jquery/jquery.min.js" },
-                { src:"<%= nodeGlobal %>/requirejs/require.js", dest:"<%= vendor %>/require/require.js" },
+                { src:"<%= nodeLocal %>/requirejs/require.js", dest:"<%= vendor %>/require/require.js" },
                 { src:"semantic/dist/semantic.min.js", dest:"<%= vendor %>/semantic/semantic.min.js" },
                 { src:"semantic/dist/semantic.min.css", dest:"<%= vendor %>/semantic/semantic.min.css" },
                 { src:"<%= src %>/index.html", dest:"<%= dest %>/index.html" }
@@ -110,6 +110,6 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['clean:init', 'copy:main', 'string-replace', 'requirejs', 'sass', 'concat', 'clean:finalize']);
 
-  grunt.registerTask('install', ['copy:install', 'exec']);
+  grunt.registerTask('compileSemanticUITheme', ['copy:install', 'exec']);
 
 };

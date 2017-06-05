@@ -22,10 +22,11 @@ cd prj
 git clone https://github.com/nelson777/prj.git .
 ```
 
-now install node dependencies and compile it with grunt
+now install node dependencies, compile Sematic UI customized theme (optional) and compile it with grunt
 
 ```shell
 npm install
+grunt compileSemanticUITheme
 grunt
 ```
 
