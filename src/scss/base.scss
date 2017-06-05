@@ -1,6 +1,10 @@
 @import 'color';
 
-div {
+div#root {
     background-color: $background-color;
     color: $text-color;
+}
+
+div#btnTest {
+    padding: 10px;
 }

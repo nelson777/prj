@@ -3,3 +3,4 @@ src/vendor/*
 www/*
 package-lock.json
 .sass-cache/
+semantic/
