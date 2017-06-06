@@ -24,6 +24,8 @@
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
     "requirejs": "^2.3.3",
+    "requirejs-json": "0.0.3",
+    "requirejs-text": "^2.0.15",
     "semantic-ui": "^2.2.10"
   }
 }

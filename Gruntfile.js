@@ -36,6 +36,8 @@ module.exports = function(grunt) {
             files: [
                 { src:"<%= nodeLocal %>/jquery/dist/jquery.min.js", dest:"<%= vendor %>/jquery/jquery.min.js" },
                 { src:"<%= nodeLocal %>/requirejs/require.js", dest:"<%= vendor %>/require/require.js" },
+                { src:"<%= nodeLocal %>/requirejs-text/text.js", dest:"<%= vendor %>/require/text.js" },
+                { src:"<%= nodeLocal %>/requirejs-json/json.js", dest:"<%= vendor %>/require/json.js" },
                 { src:"semantic/dist/semantic.min.js", dest:"<%= vendor %>/semantic/semantic.min.js" },
                 { src:"semantic/dist/semantic.min.css", dest:"<%= vendor %>/semantic/semantic.min.css" },
                 { src:"<%= nodeLocal %>/moment/min/moment.min.js", dest:"<%= vendor %>/moment/moment.min.js" },
@@ -67,10 +69,12 @@ module.exports = function(grunt) {
     requirejs: {
       compile: {
           options: {
-              baseUrl: '<%= src %>/js',
+              baseUrl: '<%= src %>/app',
               name: "../config/app",
               out: "<%= dest %>/js/prj.min.js",
               paths: {
+                   text: '../vendor/require/text',
+                   json: '../vendor/require/json',
                    jquery: '../vendor/jquery/jquery.min',
                    moment: '../vendor/moment/moment.min',
                    crossroads: '../vendor/crossroads/crossroads.min',

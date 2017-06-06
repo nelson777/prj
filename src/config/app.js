@@ -1,6 +1,8 @@
  requirejs.config({
-     baseUrl: 'js/',
+     baseUrl: 'app/',
      paths: {
+         text: '../vendor/require/text',
+         json: '../vendor/require/json',
          jquery: '../vendor/jquery/jquery.min',
          moment: '../vendor/moment/moment.min',
          crossroads: '../vendor/crossroads/crossroads.min',
