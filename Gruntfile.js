@@ -69,7 +69,7 @@ module.exports = function(grunt) {
     requirejs: {
       compile: {
           options: {
-              baseUrl: '<%= src %>/app',
+              baseUrl: '<%= src %>/js',
               name: "../config/app",
               out: "<%= dest %>/js/prj.min.js",
               paths: {

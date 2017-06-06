@@ -1,5 +1,5 @@
  requirejs.config({
-     baseUrl: 'app/',
+     baseUrl: 'js/',
      paths: {
          text: '../vendor/require/text',
          json: '../vendor/require/json',
